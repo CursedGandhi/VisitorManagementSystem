@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme='dark'>
+  <div class="container-fluid">
+    @if(isLogin()){
+    <a class="navbar-brand" [routerLink]="['home']">
+      <span id="zk-trigger"><img src="logo1.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
+      <span id="larger" class="teko"><b>V</b><span id="hide1" class="hide">isitor&nbsp;</span><b>M</b><span id="hide2" class="hide">anagement&nbsp;</span><b>S</b><span id="hide2" class="hide">ystem</span></span></span>
+    </a>
+    }
+    @else{
+    <a class="navbar-brand " href="#" onclick="return false;" (click)="sidebarVisible = true">
+      <span id="zk-trigger"><img src="logo1.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-center">
+      <span id="larger" class="teko"><b>V</b><span id="hide1" class="hide">isitor&nbsp;</span><b>M</b><span id="hide2" class="hide">anagement&nbsp;</span><b>S</b><span id="hide2" class="hide">ystem</span></span></span>
+    </a>
+    <p-sidebar [(visible)]="sidebarVisible">
+      <p>
+          <app-user-info/>
+          <br>
+          <button class="justify-content-bottom btn btn-outline-danger" (click)='onSignOut()'>Sign Out</button>
+      </p>
+  </p-sidebar>
+    }
+
+    @if(!isLogin())
+    {
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" data-bs-target='dark'>
+        @if(isNotSecurity())
+        {<a class="nav-link" [routerLink]="['users']" routerLinkActive="active">Manage Users</a>}
+        <a class="nav-link" [routerLink]="['visitors']" routerLinkActive="active">Manage Visitors</a>
+      </div>
+
+    </div>
+    }
+  </div>
+</nav>

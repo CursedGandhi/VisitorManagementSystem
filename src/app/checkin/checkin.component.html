@@ -1,0 +1,29 @@
+<div class = 'container'>
+<app-view-visitor [visitor]="visitor" [checkedIn]="true" [closer]="false"/>
+<br>
+<div class = 'container mb-3'>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+        <label for="is_remarks" class="form-label">Security Remarks</label>
+        <textarea type="text" class="form-control" id="sec_remarks" name='sec_remarks' formControlName="sec_remarks"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="no_vis" class="form-label">Number of Visitors</label>
+        <input type="number" class="form-control" id="no_vis" name='no_vis' formControlName="no_vis">
+    </div>
+    <div class=" mb-3">
+        <label for="formFile" class="form-label">Upload your picture</label>
+        <input class="form-control" type="file" name = "image" id="formFile" (change)="onFileSelected($event)">
+    </div>
+    <div class="row text-center">
+        <div class="col">
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+    </div>
+    <div class="col">
+        <button type='close' class="btn btn-danger" (click)="onClose()">Close</button>
+    </div>
+    </div>
+</form>
+</div>
+</div>
+

@@ -1,0 +1,101 @@
+@if(isPosting()){
+<div class='container justify-content-evenly'>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+}
+@else{
+<div class='container'>
+    <form (ngSubmit)='onSubmit()' [formGroup]="form">
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name='name' formControlName="name">
+                @if(nameIsInvalid)
+                {
+                <p class='control-error'>
+                    Invalid Name. Must only contain letters or whitespaces.
+                </p>
+                }
+            </div>
+            <div class="mb-3 col">
+                <label for="company" class="form-label">Visitor Company</label>
+                <input type="text" class="form-control" id="company" name='company' formControlName="company">
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-2">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id" name='id' [defaultValue]='nextId' disabled>
+            </div>
+            <div class="mb-3 col">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name='email' formControlName="email">
+                @if(emailIsInvalid)
+                {
+                <div class='control-error'>
+                    Invalid Email. Please enter a valid email address.
+                </div>
+                }
+            </div>
+            <div class="mb-3 col">
+                <label for="number" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="number" name='number' formControlName="number">
+                @if(numberIsInvalid)
+                {
+                <div class='control-error'>
+                    Invalid Phone number. Please enter a valid phone number(10 digits).
+                </div>
+                }
+            </div>
+            <div class="mb-3 col-2">
+                <label for="date" class="form-label"><span class="d-lg-none d-block">Date</span><span
+                        class="d-none d-lg-block">Date of Visit</span></label>
+                <input type="date" class="form-control" id="date" name='date' formControlName="date">
+            </div>
+            @if(dateIsInvalid)
+            {
+            <div class='control-error'>
+                Invalid date. Please input a date that is on or after today.
+            </div>
+            }
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="doc" class="form-label">ID Proof Type</label>
+                <select class="form-select" aria-label="doc" name='doc' formControlName="doc">
+                    <option value="aadhar">Aadhar Card</option>
+                    <option value="pan">PAN Card</option>
+                    <option value="passport">Passport</option>
+                </select>
+            </div>
+
+            <div class="mb-3 col">
+                <label for="doc_no" class="form-label">ID Number</label>
+                <input type="text" class="form-control" id="doc_no" name='doc_no' formControlName="doc_no">
+                @if(docIsInvalid)
+                {
+                <div class='control-error'>
+                    Invalid ID Number. Please enter a valid number based on selected ID type.
+                </div>
+                }
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="is_remarks" class="form-label">Issuer Remarks</label>
+            <textarea type="text" class="form-control" id="is_remarks" name='is_remarks'
+                formControlName="is_remarks"></textarea>
+        </div>
+
+
+        <div class="row align-items-center"><button type="submit" class="btn btn-primary col m-2"
+                [disabled]="!form.valid">Submit</button>
+            <button class="btn btn-danger col m-2" (click)="onClose()">Close</button>
+        </div>
+    </form>
+</div>
+}

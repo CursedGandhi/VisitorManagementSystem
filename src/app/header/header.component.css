@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap');
+
+.navbar {
+    background-color: #343a40 !important; /* Dark background */
+  }
+  
+  .nav-link {
+    color: #fff !important; /* White text */
+  }
+  
+  .nav-link.active {
+    font-weight: bold;
+    color: #ffc107 !important; /* Highlight active link with yellow */
+  }
+  
+  .btn-outline-light {
+    border-color: #ffc107;
+    color: #ffc107;
+  }
+  
+  .btn-outline-light:hover {
+    background-color: #ffc107;
+    color: #343a40;
+  }
+  
+  .p-sidebar-content {
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .btn-outline-danger {
+    border-color: #dc3545;
+    color: #dc3545;
+  }
+  
+  .btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+.p-sidebar{
+  background-color: #343a40 !important;
+}
+
+#hide1, #hide2{
+  display: inline-block;
+  max-width: 0;
+  opacity: 0;
+  transition: max-width 0.3s, opacity 0.2s;
+}
+
+#zk-trigger:hover #hide1, #zk-trigger:hover #hide2{
+  max-width: 150px;
+  opacity: 1;
+  transition: max-width 0.3s, opacity 0.2s;
+}
+
+#larger{
+  font-size: larger;
+}
+
+.teko{
+  font-family: "Teko", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

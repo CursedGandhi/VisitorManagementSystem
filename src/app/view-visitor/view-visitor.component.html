@@ -1,0 +1,29 @@
+
+<div class=' container'>
+    <div>
+        <div>
+            <h5>Current Visitor</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Visitor ID: </b>{{visitor.id}}</li>
+            <li class="list-group-item"><b>Name: </b>{{visitor.name}}</li>
+            <li class="list-group-item"><b>Email ID: </b>{{visitor.email}}</li>
+            <li class="list-group-item"><b>Company </b>{{visitor.company}}</li>
+            <li class="list-group-item"><b>Phone Number: </b>{{visitor.number}}</li>
+            <li class="list-group-item"><b>Document of Proof: </b>{{visitor.doc}}</li>
+            <li class="list-group-item"><b>Document ID: </b>{{visitor.doc_no}}</li>
+            <li class="list-group-item"><b>Date of Visit: </b>{{visitor.date}}</li>
+            <li class="list-group-item"><b>Issuing Employee ID: </b>{{visitor.user}}</li>
+            <li class="list-group-item"><b>Issuing Employee Remarks: </b>{{visitor.is_remarks}}</li>
+            @if(!checkedIn){<li class="list-group-item"><b>Security Remarks: </b>{{visitor.sec_remarks}}</li>
+            <li class="list-group-item"><b>No. of visitors in group: </b>{{visitor.no_vis}}</li>}
+        </ul>
+
+        @if(closer)
+        {
+            <div class='col text-center'>
+            <button type="close" class="btn btn-danger" (click)="onClose()">Close</button>
+        </div>
+    }
+    </div>
+</div>

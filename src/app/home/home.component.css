@@ -1,0 +1,71 @@
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border: 1px solid red;
+  margin-bottom: 0rem;
+}
+body {
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-title {
+  color: #000000;
+}
+
+.control-error {
+  font-size: 0.875em;
+}
+
+
+.login-hr {
+  border: 0;
+  border-top: 1px solid black;
+  margin-top: -1rem;
+  margin-bottom: 2rem;
+}
+
+
+.container {
+  padding: 2%;
+  border: 1px solid black
+}
+
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+dialog {
+  width: 90%;
+  max-width: 30rem;
+  background-color: white;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  padding: 1rem;
+  top: 5rem;
+}
+
+
+.actions {
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+@media (min-width: 768px) {
+  dialog {
+    padding: 2rem;
+  }
+}

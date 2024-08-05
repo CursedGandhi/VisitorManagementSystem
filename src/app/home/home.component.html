@@ -1,0 +1,35 @@
+<div class="mt-5">
+  <div class=" d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-lg p-4">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Login</h2>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp"placeholder="user@email.com" formControlName="email">
+              @if(emailIsInvalid)
+              {
+              <div class="control-error text-danger mt-2">
+                Invalid Email. Please enter a valid email address.
+              </div>
+              }
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" formControlName="password">
+              <div id="passwordHelp" class="form-text">Password must be at least 6 characters long with at least one special character, alphabet, and number.</div>
+              @if(passwordIsInvalid)
+              {
+              <div class="control-error text-danger mt-2">
+                Invalid password. Please enter a valid password.
+              </div>
+              }
+            </div>
+            <button type="submit" class="btn btn-success w-100" [disabled]="!form.valid">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

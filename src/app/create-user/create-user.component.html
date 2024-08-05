@@ -1,0 +1,96 @@
+@if(isPosting()){
+<div class='container justify-content-evenly'>
+    <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+}
+@else{
+<div class='container'>
+    <form (ngSubmit)='onSubmit()' [formGroup]="form">
+        <div class='row'>
+            <div class="mb-3 col-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" name='name' formControlName="name">
+                @if(nameIsInvalid)
+                {
+                <p class='control-error'>
+                    Invalid Name. Must only contain letters or whitespaces.
+                </p>
+                }
+            </div>
+
+            <div class="mb-3 col-3">
+                <label for="id" class="form-label">ID</label>
+                <input type="text" class="form-control" id="id" name='id' [defaultValue]='nextId' disabled>
+            </div>
+
+            <div class="mb-3 col-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" aria-label="Role" name='role' formControlName="role">
+                    @for(role of roles; track role){
+                    <option [value]="role">{{role}}</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="mb-3 col">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name='email' formControlName="email">
+                @if(emailIsInvalid)
+                {
+                <div class='control-error'>
+                    Invalid Email. Please enter a valid email address.
+                </div>
+                }
+            </div>
+            <div class="mb-3 col">
+                <label for="number" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" id="number" name='number' formControlName="number">
+                @if(numberIsInvalid)
+                {
+                <div class='control-error'>
+                    Invalid Phone number. Please enter a valid phone number(10 digits).
+                </div>
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col">
+                <label for="password" type='password' class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name='password' formControlName="password">
+                <div id="passwordHelp" class="form-text">Password must be atleast 6 characters long with atleast one
+                    special
+                    character, alphabet and number.</div>
+                @if(passwordIsInvalid)
+                {
+                <div class='control-error'>
+                    Invalid password. Please enter a valid password.
+                </div>
+                }
+            </div>
+            <div class="mb-3 col">
+                <label for="confirmpassword" type='password' class="form-label">Re-enter Password</label>
+                <input type="password" class="form-control" id="confirmpassword" name='confirmpassword'
+                    formControlName="confirmpassword">
+                <div id="retypepasswordHelp" class="form-text">Please reenter above password to confirm.</div>
+                @if(confirmPasswordIsInvalid || form.get('password')!.value !== form.get('confirmpassword')!.value)
+                {
+                <div class='control-error'>
+                    Please enter the same password as above.
+                </div>
+                }
+            </div>
+        </div>
+        <div class='row align-items-center'><button type="submit" class="btn btn-primary col m-2"
+                [disabled]="!form.valid || form.get('password')!.value !== form.get('confirmpassword')!.value">Submit</button>
+            <button type="close" class="btn btn-danger col m-2" (click)="onClose()">Close</button>
+        </div>
+    </form>
+
+
+</div>
+}
